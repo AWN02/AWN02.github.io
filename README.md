@@ -66,7 +66,9 @@ mkdir -p ~/uptime-kuma && cd ~/uptime-kuma
 ```
 sudo nano docker-compose.yml
 ```
+
 Paste:
+
 ```
 version: "3.8"
 
