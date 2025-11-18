@@ -1,5 +1,4 @@
-# Docker Compose Uptime Kuma
-## Arch Install at the bottom of page
+# Docker Compose: Uptime Kuma (Arch Install at the bottom of page)
 ## Install Docker on Ubuntu:
 Instructions on: https://docs.docker.com/engine/install/
 Uninstall old versions:
@@ -107,8 +106,6 @@ Hit Ctrl+O to write to file and Ctrl+X to exit
 ```
 docker-compose up -d
 ```
-* Starts Uptime Kuma container
-
 In a web browser, paste the following:
 ```
 http://<your-server-ip-here>:3001
@@ -117,6 +114,8 @@ In my case, I paste:
 ```
 http://10.30.83.10:3001
 ```
+
+
 
 # Arch Install using UTM on Mac
 
