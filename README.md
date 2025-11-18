@@ -1,6 +1,8 @@
 # Docker Compose: Uptime Kuma (Arch Install at the bottom of page)
 ## Install Docker on Ubuntu:
 Instructions on: https://docs.docker.com/engine/install/
+
+
 Uninstall old versions:
 ```
 sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-compose-v2 docker-doc podman-docker containerd runc | cut -f1) 
