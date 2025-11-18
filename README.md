@@ -1,3 +1,5 @@
+{% raw %}
+
 # Docker Compose: Uptime Kuma  (Arch Install below)
 ## Install Docker on Ubuntu:
 Instructions on: https://docs.docker.com/engine/install/
@@ -264,3 +266,4 @@ Append different theme for file system using fish config file:
 
 The main problem from this project was virtualizing from the arm64 iso, specifically installing the bootloader since grub wouldn't detect my kernel no matter what I did. This emulation process of installing Arch linux closely represents how it was supposed to be installed.
 
+{% endraw %}
