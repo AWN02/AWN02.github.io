@@ -101,7 +101,7 @@ http://138.68.254.161:51821
 * Activate it
 * Compare before and after IP address
 
-![yml1](https://github.com/AWN02/AWN02.github.io/blob/f14ca91c4f7b1e66a1143ccf5ec5418a92f991b0/ymlfile1.png)
+![yml1](https://github.com/AWN02/AWN02.github.io/blob/f14ca91c4f7b1e66a1143ccf5ec5418a92f991b0/ymlfile1.png?raw=true)
 
 
 # Docker Compose: Uptime Kuma
