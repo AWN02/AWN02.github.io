@@ -1,5 +1,7 @@
 # Cloud VPN-Docker Project (Uptime-Kuma docker-compose and Arch Install below)
 Instructions on: https://github.com/wg-easy/wg-easy/tree/v14.0.0?tab=readme-ov-file
+
+Screenshots Below
 ## Setup Droplet
 * Click create on top right
 * Select Ubuntu 24.04, Basic, Regular Intel CPU, Normal SSD
@@ -20,7 +22,9 @@ mkdir -p ~/wireguard && cd ~/wireguard
 ```
 sudo nano docker-compose.yml
 ```
+
 Paste:
+
 ```
 volumes:
   etc_wireguard:
@@ -96,6 +100,8 @@ http://138.68.254.161:51821
 * Import config file by scanning QR code with phone using app
 * Activate it
 * Compare before and after IP address
+
+![image alt](https://github.com/AWN02/AWN02.github.io/blob/f14ca91c4f7b1e66a1143ccf5ec5418a92f991b0/ymlfile1.png)
 
 
 # Docker Compose: Uptime Kuma
