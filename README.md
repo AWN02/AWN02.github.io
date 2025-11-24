@@ -1,4 +1,104 @@
-# Docker Compose: Uptime Kuma (Arch Install at the bottom of page)
+# Cloud VPN-Docker Project (Uptime-Kuma docker-compose and Arch Install below)
+Instructions on: https://github.com/wg-easy/wg-easy/tree/v14.0.0?tab=readme-ov-file
+## Setup Droplet
+* Click create on top right
+* Select Ubuntu 24.04, Basic, Regular Intel CPU, Normal SSD
+* Choose $6/month droplet
+* Choose password and set it
+* Click Create Droplet
+* Run the console
+## Install Docker
+```
+curl -sSL https://get.docker.com | sh
+sudo usermod -aG docker $(whoami)
+```
+## Create docker-compose.yml file
+```
+mkdir -p ~/wireguard && cd ~/wireguard
+```
+* Creates directory for Wireguard
+```
+sudo nano docker-compose.yml
+```
+Paste:
+```
+volumes:
+  etc_wireguard:
+
+services:
+  wg-easy:
+    environment:
+      # Change Language:
+      # (Supports: en, ua, ru, tr, no, pl, fr, de, ca, es, ko, vi, nl, is, pt, chs, cht, it, th, hi)
+      - LANG=en
+      # ⚠️ Required:
+      # Change this to your host's public address
+      - WG_HOST=138.68.254.161 # Your Droplet IP Address
+
+      # Optional:
+      # - PASSWORD_HASH=$$2y$$10$$hBCoykrB95WSzuV4fafBzOHWKu9sbyVa34GJr8VV5R/pIelfEMYyG # (needs double $$, hash of 'foobar123'; see "How_to_generate_an_bcrypt_hash.md" for generate the hash)
+      # - PORT=51821
+      # - WG_PORT=51820
+      # - WG_CONFIG_PORT=92820
+      # - WG_DEFAULT_ADDRESS=10.8.0.x
+      # - WG_DEFAULT_DNS=1.1.1.1
+      # - WG_MTU=1420
+      # - WG_ALLOWED_IPS=192.168.15.0/24, 10.0.1.0/24
+      # - WG_PERSISTENT_KEEPALIVE=25
+      # - WG_PRE_UP=echo "Pre Up" > /etc/wireguard/pre-up.txt
+      # - WG_POST_UP=echo "Post Up" > /etc/wireguard/post-up.txt
+      # - WG_PRE_DOWN=echo "Pre Down" > /etc/wireguard/pre-down.txt
+      # - WG_POST_DOWN=echo "Post Down" > /etc/wireguard/post-down.txt
+      # - UI_TRAFFIC_STATS=true
+      # - UI_CHART_TYPE=0 # (0 Charts disabled, 1 # Line chart, 2 # Area chart, 3 # Bar chart)
+
+    image: ghcr.io/wg-easy/wg-easy:14
+    container_name: wg-easy
+    volumes:
+      - etc_wireguard:/etc/wireguard
+    ports:
+      - "51820:51820/udp"
+      - "51821:51821/tcp"
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+      # - NET_RAW # ⚠️ Uncomment if using Podman 
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv4.conf.all.src_valid_mark=1
+```
+Hit Ctrl+O to write to file and Ctrl+X to exit
+
+* Creates the docker-compose.yml file
+```
+docker-compose up --detach
+```
+* Starts Wireguard container
+
+In a web browser, paste the following:
+```
+http://<your-server-ip-here>:51821
+```
+In my case, I paste: 
+```
+http://138.68.254.161:51821
+```
+* Create client for both PC and mobile device
+## PC setup
+* For Mac users, install Wireguard from App Store
+* Download config file for PC and import it to Wireguard.
+* Click activate
+* Compare before and after IP address
+## Mobile device setup
+* On iPhone, download Wireguard from App Store
+* Show the QR code for mobile device client
+* Import config file by scanning QR code with phone using app
+* Activate it
+* Compare before and after IP address
+
+
+# Docker Compose: Uptime Kuma
 ## Install Docker on Ubuntu:
 Instructions on: https://docs.docker.com/engine/install/
 
